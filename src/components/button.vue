@@ -10,9 +10,7 @@
       @mouseout="mOutChange($event)"
       :class="{[`icon-${iconPosition}`]:true}"
     >
-      <svg class="icon" aria-hidden="true" v-if="icon">
-        <use :xlink:href="`#icon-${icon}`" />
-      </svg>
+      <g-Icon v-if="icon" :name="icon" class="icon"></g-Icon>
       <slot class="content"></slot>
     </button>
   </div>
@@ -95,10 +93,7 @@ export default {
   .active {
     background-color: var(--button-active-bg, rgb(20, 128, 250));
   }
-  .icon {
-    height: 1rem;
-    width: 1rem;
-  }
+
   &.icon-right {
     .content {
       order: 1;

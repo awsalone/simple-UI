@@ -6,11 +6,10 @@
 </template>
 
 <script>
-import Button from './components/button'
+
 export default {
   name: 'App',
   components: {
-    "g-Button": Button
   }
 }
 </script>
