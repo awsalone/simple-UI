@@ -8,19 +8,30 @@
       @blur="blurChange($event)"
       @mouseover="mOverChange($event)"
       @mouseout="mOutChange($event)"
+      :class="{[`icon-${iconPosition}`]:true}"
     >
-      <slot></slot>
+      <svg class="icon" aria-hidden="true" v-if="icon">
+        <use :xlink:href="`#icon-${icon}`" />
+      </svg>
+      <slot class="content"></slot>
     </button>
   </div>
 </template>
 
 <script>
 export default {
-  props: [
-    {
-      type: String
+  props: {
+    icon: {},
+    iconPosition: {
+      default: "left",
+      validator (value) {
+        return !(value !== 'right' && value !== 'left')
+      }
     }
-  ],
+
+  },
+
+
   data () {
     return {
       onfoucus: false
@@ -83,6 +94,18 @@ export default {
 
   .active {
     background-color: var(--button-active-bg, rgb(20, 128, 250));
+  }
+  .icon {
+    height: 1rem;
+    width: 1rem;
+  }
+  &.icon-right {
+    .content {
+      order: 1;
+    }
+    .icon {
+      order: 2;
+    }
   }
 }
 </style>
