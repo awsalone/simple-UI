@@ -1,6 +1,14 @@
 <template>
   <div>
-    <button class="baseButton">
+    <button
+      class="baseButton"
+      @mousedown="mdChange($event)"
+      @mouseup="muChange($event)"
+      @focus="focusChange($event)"
+      @blur="blurChange($event)"
+      @mouseover="mOverChange($event)"
+      @mouseout="mOutChange($event)"
+    >
       <slot></slot>
     </button>
   </div>
@@ -10,9 +18,53 @@
 export default {
   props: [
     {
-
+      type: String
     }
-  ]
+  ],
+  data () {
+    return {
+      onfoucus: false
+    }
+  },
+  methods: {
+    // mousedown
+    mdChange: function (e) {
+      e.target.style.borderColor = "rgb(0, 120, 189)"
+      e.target.style.color = "rgb(0, 120, 189)"
+    },
+    // mouseup
+    muChange: function (e) {
+      e.target.style.borderColor = "var(--border-color-hover, rgb(37, 167, 241))"
+      e.target.style.color = "var(--color-hover, #409eff)"
+    },
+    // onblur
+    blurChange: function (e) {
+      e.target.style.borderColor = "var(--border-color, #ccc)"
+      e.target.style.color = "var(--color)"
+      e.target.style.backgroundColor = "var(--button-bg)"
+      this.onfoucus = false
+    },
+    // foucus
+    focusChange: function (e) {
+      e.target.style.outline = "none";
+      this.onfoucus = true
+    },
+    // mouseover
+    mOverChange: function (e) {
+      e.target.style.borderColor = 'var(--border-color-hover, #c6e2ff)'
+      e.target.style.color = 'var(--color-hover, #409eff)'
+      e.target.style.backgroundColor = ' #ecf5ff'
+    },
+    // mouseOut
+    mOutChange: function (e) {
+      if (!this.onfoucus) {
+        e.target.style.borderColor = 'var(--border-color, #ccc)'
+        e.target.style.color = 'var(--color)'
+        e.target.style.backgroundColor = 'var(--button-bg)'
+      }
+    }
+  },
+
 }
 </script>
 
@@ -28,10 +80,7 @@ export default {
   justify-content: center;
   align-items: center;
   border: 1px solid var(--border-color, #ccc);
-  &:hover {
-    border-color: var(--border-color-hover, rgb(37, 167, 241));
-    color: var(--color-hover, rgb(37, 167, 241));
-  }
+
   .active {
     background-color: var(--button-active-bg, rgb(20, 128, 250));
   }
