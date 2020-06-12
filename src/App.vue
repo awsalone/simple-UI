@@ -1,7 +1,10 @@
 <template>
   <div id="app">
-    <g-Button icon="setting" iconPosition="right">默认按钮</g-Button>
     <g-Button icon="setting">默认按钮</g-Button>
+    <g-Button type="primary">主要按钮</g-Button>
+    <g-Button type="info">信息按钮</g-Button>
+    <g-Button type="warning" icon="setting">警告按钮</g-Button>
+    <g-Button circle type="primary" icon="setting"></g-Button>
   </div>
 </template>
 
@@ -14,15 +17,17 @@ export default {
 }
 </script>
 
-<style lang='scss' scoped>
+<style lang='scss' >
 :root {
   --button-bg: #fff;
 }
-.icon {
-  width: 1em;
-  height: 1em;
-  vertical-align: -0.15em;
-  fill: currentColor;
-  overflow: hidden;
+#app {
+  .icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+  }
 }
 </style>

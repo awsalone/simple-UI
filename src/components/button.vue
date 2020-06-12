@@ -1,29 +1,37 @@
 <template>
-  <div>
-    <button
-      class="baseButton"
-      @mousedown="mdChange($event)"
-      @mouseup="muChange($event)"
-      @focus="focusChange($event)"
-      @blur="blurChange($event)"
-      @mouseover="mOverChange($event)"
-      @mouseout="mOutChange($event)"
-      :class="{[`icon-${iconPosition}`]:true}"
-    >
-      <g-Icon v-if="icon" :name="icon" class="icon"></g-Icon>
-      <slot class="content"></slot>
-    </button>
-  </div>
+  <button
+    v-if="this.typeStyle"
+    class="baseButton"
+    @mousedown="mdChange($event)"
+    @mouseup="muChange($event)"
+    @focus="focusChange($event)"
+    @blur="blurChange($event)"
+    @mouseover="mOverChange($event)"
+    @mouseout="mOutChange($event)"
+    :class="[{[`icon-${iconPosition}`]:true,},`icon-${borderShape}`,{borderExist:typeStyle.border}]"
+    :style="[{color:typeStyle.color},{backgroundColor:typeStyle.bgc}]"
+  >
+    <g-Icon v-if="icon" :icon="icon" class="icon" color="typeStyle.color"></g-Icon>
+    <slot class="content"></slot>
+  </button>
 </template>
 
 <script>
 export default {
   props: {
+    // 图标名称
     icon: {},
+    // 图标位置 左右
     iconPosition: {
       default: "left",
       validator (value) {
         return !(value !== 'right' && value !== 'left')
+      },
+    },
+    type: {
+      default: 'base',
+      validator (value) {
+        return !(value !== 'primary' && value !== 'info' && value !== 'warning' && value !== 'base')
       }
     }
 
@@ -32,66 +40,144 @@ export default {
 
   data () {
     return {
-      onfoucus: false
+      //foucus状态
+      onfoucus: false,
+      // 边框形状
+      borderShape: '',
+      typeStyle: {},
+      typeList: [
+        // base
+        {
+          color: '#606266',
+          bgc: '#fff',
+          borderColor: '#DCDFE6', // default
+          hoverColor: '#40B6FF',
+          hoverbgc: '#ECF5FF',
+          hoverBorderColor: '#409EFF',// hover边框颜色
+          downColor: '#3A8EE6',// 按下字体，边框颜色
+          border: true
+        },
+        // primary
+        {
+          color: '#fff',
+          bgc: '#409EFF',
+          hoverbgc: '#66B1FF',
+          downColor: '#3A8EE6',// 按下bgc
+        },
+        // info
+        {
+          color: '#fff',
+          bgc: '#909399',
+          hoverbgc: '#A6A9AD',
+          downColor: '#82848A',// 按下bgc
+        },
+        // danger
+        {
+          color: '#fff',
+          bgc: '#F56C6C',
+          hoverbgc: '#F78989',
+          downColor: '#DD6161',// 按下bgc
+        }
+      ]
     }
   },
   methods: {
+    // mouseover
+    mOverChange: function (e) {
+      if (this.type === 'base') {
+        e.target.style.borderColor = this.typeStyle.hoverBorderColor
+        e.target.style.color = this.typeStyle.hoverColor
+      }
+
+      e.target.style.backgroundColor = this.typeStyle.hoverbgc
+    },
     // mousedown
     mdChange: function (e) {
-      e.target.style.borderColor = "rgb(0, 120, 189)"
-      e.target.style.color = "rgb(0, 120, 189)"
+      if (this.type === 'base') {
+        e.target.style.color = this.typeStyle.downColor
+        e.target.style.borderColor = this.typeStyle.downColor
+      } else {
+        e.target.style.backgroundColor = this.typeStyle.downColor
+      }
+
     },
     // mouseup
     muChange: function (e) {
-      e.target.style.borderColor = "var(--border-color-hover, rgb(37, 167, 241))"
-      e.target.style.color = "var(--color-hover, #409eff)"
-    },
-    // onblur
-    blurChange: function (e) {
-      e.target.style.borderColor = "var(--border-color, #ccc)"
-      e.target.style.color = "var(--color)"
-      e.target.style.backgroundColor = "var(--button-bg)"
-      this.onfoucus = false
+      if (this.type === 'base') {
+        e.target.style.color = this.typeStyle.hoverColor
+        e.target.style.borderColor = this.typeStyle.hoverBorderColor
+      } else {
+        e.target.style.backgroundColor = this.typeStyle.hoverbgc
+      }
+
+
     },
     // foucus
     focusChange: function (e) {
       e.target.style.outline = "none";
       this.onfoucus = true
     },
-    // mouseover
-    mOverChange: function (e) {
-      e.target.style.borderColor = 'var(--border-color-hover, #c6e2ff)'
-      e.target.style.color = 'var(--color-hover, #409eff)'
-      e.target.style.backgroundColor = ' #ecf5ff'
-    },
     // mouseOut
     mOutChange: function (e) {
       if (!this.onfoucus) {
-        e.target.style.borderColor = 'var(--border-color, #ccc)'
-        e.target.style.color = 'var(--color)'
-        e.target.style.backgroundColor = 'var(--button-bg)'
+        if (this.type === 'base') {
+          e.target.style.borderColor = this.typeStyle.borderColor
+          e.target.style.color = this.typeStyle.color
+        }
+        e.target.style.backgroundColor = this.typeStyle.bgc
       }
+    },
+    // onblur
+    blurChange: function (e) {
+      if (this.type === 'base') {
+        e.target.style.borderColor = this.typeStyle.borderColor
+        e.target.style.color = this.typeStyle.color
+      }
+      e.target.style.backgroundColor = this.typeStyle.bgc
+      this.onfoucus = false
     }
+
+
   },
+  created () {
+    // border-radius
+    if (this.$attrs.circle !== undefined) {
+      this.borderShape = 'circle'
+    } else if (this.$attrs.round !== undefined) {
+      this.borderShape = 'round'
+    }
+    // type
+    if (this.type === 'primary') {
+      this.typeStyle = this.typeList[1]
+    } else if (this.type === 'info') {
+      this.typeStyle = this.typeList[2]
+    } else if (this.type === 'warning') {
+      this.typeStyle = this.typeList[3]
+    } else {
+      this.typeStyle = this.typeList[0]
+    }
+    // bgc color
+    console.log(this)
+  }
 
 }
 </script>
 
-<style lang='scss' scoped>
+<style lang='scss'>
 .baseButton {
   height: var(--button-height);
-  font-size: var(--font-size, 14px);
-  background-color: var(--button-bg);
+  font-size: 14px;
   border-radius: 4px;
-  color: var(--color);
-  padding: 0.5rem 1rem;
+  padding: 0.7rem 1.1rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid var(--border-color, #ccc);
-
-  .active {
-    background-color: var(--button-active-bg, rgb(20, 128, 250));
+  border: 0;
+  .content {
+    padding: 1rem;
+  }
+  &.borderExist {
+    border: 1px solid #ccc;
   }
 
   &.icon-right {
@@ -101,6 +187,13 @@ export default {
     .icon {
       order: 2;
     }
+  }
+  &.icon-circle {
+    border-radius: 50%;
+    padding: 0.5rem;
+  }
+  &.icon-round {
+    border-radius: 300px;
   }
 }
 </style>
