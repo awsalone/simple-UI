@@ -180,9 +180,10 @@ export default {
   font-size: 14px;
   border-radius: 4px;
   padding: 0.7rem 1.1rem;
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
+  margin: 5px;
   border: 0;
   .loading {
     animation: spin 1.3s linear infinite;
