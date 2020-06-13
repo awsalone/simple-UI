@@ -1,10 +1,14 @@
 <template>
   <div id="app">
-    <g-Button icon="setting">默认按钮</g-Button>
+    <g-Button>默认按钮</g-Button>
     <g-Button type="primary">主要按钮</g-Button>
     <g-Button type="info">信息按钮</g-Button>
-    <g-Button type="warning" icon="setting">警告按钮</g-Button>
+    <g-Button type="warning" icon="setting" :loading="true" iconPosition="right">警告按钮</g-Button>
     <g-Button circle type="primary" icon="setting"></g-Button>
+    <g-Button-group>
+      <g-Button icon="last" type="primary"></g-Button>
+      <g-Button icon="next" type="primary"></g-Button>
+    </g-Button-group>
   </div>
 </template>
 

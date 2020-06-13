@@ -11,7 +11,8 @@
     :class="[{[`icon-${iconPosition}`]:true,},`icon-${borderShape}`,{borderExist:typeStyle.border}]"
     :style="[{color:typeStyle.color},{backgroundColor:typeStyle.bgc}]"
   >
-    <g-Icon v-if="icon" :icon="icon" class="icon" color="typeStyle.color"></g-Icon>
+    <g-Icon icon="loading" class="loading icon" v-if="loading" style="fill:#fff"></g-Icon>
+    <g-Icon v-if="icon && !loading" :icon="icon" class="icon" color="typeStyle.color"></g-Icon>
     <slot class="content"></slot>
   </button>
 </template>
@@ -28,11 +29,16 @@ export default {
         return !(value !== 'right' && value !== 'left')
       },
     },
+    // type
     type: {
       default: 'base',
       validator (value) {
         return !(value !== 'primary' && value !== 'info' && value !== 'warning' && value !== 'base')
       }
+    },
+    loading: {
+      type: Boolean,
+      default: false
     }
 
   },
@@ -44,6 +50,7 @@ export default {
       onfoucus: false,
       // 边框形状
       borderShape: '',
+      // type
       typeStyle: {},
       typeList: [
         // base
@@ -109,8 +116,6 @@ export default {
       } else {
         e.target.style.backgroundColor = this.typeStyle.hoverbgc
       }
-
-
     },
     // foucus
     focusChange: function (e) {
@@ -156,14 +161,20 @@ export default {
     } else {
       this.typeStyle = this.typeList[0]
     }
-    // bgc color
-    console.log(this)
   }
 
 }
 </script>
 
 <style lang='scss'>
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 .baseButton {
   height: var(--button-height);
   font-size: 14px;
@@ -173,6 +184,9 @@ export default {
   justify-content: center;
   align-items: center;
   border: 0;
+  .loading {
+    animation: spin 1.3s linear infinite;
+  }
   .content {
     padding: 1rem;
   }
