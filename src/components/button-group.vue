@@ -5,13 +5,21 @@
 </template>
 <script>
 export default {
-
+  mounted () {
+    for (let node of this.$el.children) {
+      let name = node.nodeName.toLowerCase()
+      if (name !== 'button') {
+        console.warn(`g-button-group 子元素应为 g-button ,但你使用了${name}`)
+      }
+    }
+  }
 }
 </script>
 
 <style lang="scss" >
 .buttonGroup {
   display: inline-flex;
+  vertical-align: middle;
   > .baseButton {
     border-radius: 0;
     margin: 0;

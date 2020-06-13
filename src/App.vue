@@ -6,6 +6,7 @@
     <g-Button type="warning" icon="setting" :loading="true" iconPosition="right">警告按钮</g-Button>
     <g-Button circle type="primary" icon="setting"></g-Button>
     <g-Button-group>
+      <div></div>
       <g-Button icon="last" type="primary"></g-Button>
       <g-Button icon="next" type="primary"></g-Button>
     </g-Button-group>
