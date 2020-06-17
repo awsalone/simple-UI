@@ -6,10 +6,14 @@
     <g-Button type="warning" icon="setting" :loading="true" iconPosition="right">警告按钮</g-Button>
     <g-Button circle type="primary" icon="setting"></g-Button>
     <g-Button-group>
-      <div></div>
       <g-Button icon="last" type="primary"></g-Button>
       <g-Button icon="next" type="primary"></g-Button>
     </g-Button-group>
+    <g-row>
+      <g-col class="bg-purple-dark" :span="12" :offset="10" :gutter="10"></g-col>
+      <g-col class="bg-purple-dark"></g-col>
+      <g-col class="bg-purple-light"></g-col>
+    </g-row>
   </div>
 </template>
 
@@ -34,5 +38,20 @@ export default {
     fill: currentColor;
     overflow: hidden;
   }
+}
+.bg-purple-dark {
+  background: #99a9bf;
+  border-radius: 4px;
+  min-height: 36px;
+}
+.bg-purple {
+  background: #d3dce6;
+  border-radius: 4px;
+  min-height: 36px;
+}
+.bg-purple-light {
+  background: #e5e9f2;
+  border-radius: 4px;
+  min-height: 36px;
 }
 </style>
