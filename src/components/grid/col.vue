@@ -1,5 +1,7 @@
 <template>
-  <div class="g-col" :class="colClass" :style="colStyle"></div>
+  <div class="g-col" :class="colClass" :style="colStyle">
+    <slot></slot>
+  </div>
 </template>
 <script>
 export default {
