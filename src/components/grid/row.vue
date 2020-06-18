@@ -1,5 +1,5 @@
 <template>
-  <div class="g-row">
+  <div class="g-row" :class="rowClass" :style="rowStyle">
     <slot></slot>
   </div>
 </template>
@@ -8,6 +8,22 @@ export default {
   props: {
     gutter: {
       type: [Number, String]
+    },
+
+  },
+  mounted () {
+    this.$children.forEach(vm => {
+      vm.gutter = this.gutter
+    });
+  },
+
+  computed: {
+    rowStyle () {
+      let { gutter } = this
+      return {
+        paddingLeft: `-${gutter / 2}px`,
+        paddingRight: `-${gutter / 2}px`,
+      }
     }
   }
 }

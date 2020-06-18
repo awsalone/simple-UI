@@ -4,6 +4,7 @@
 <script>
 export default {
   props: {
+    // 占据列数
     span: {
       type: [String, Number],
       validator (value) {
@@ -11,17 +12,17 @@ export default {
         return /^\d{1,2}$/.test(value) && value > 0 && value < 25
       }
     },
+    // 左侧空置
     offset: {
       type: [String, Number],
       validator (value) {
         return /^\d{1,2}$/.test(value) && value > 0 && value < 25
       }
-    }
+    },
   },
   data () {
     return {
       gutter: 0
-
     }
   },
   methods: {
@@ -46,7 +47,6 @@ export default {
     },
     colStyle () {
       let { gutter } = this
-
       return {
         paddingLeft: gutter / 2 + 'px',
         paddingRight: gutter / 2 + 'px'
@@ -57,6 +57,19 @@ export default {
 </script>
 <style lang="scss" >
 .g-col {
+  box-sizing: border-box;
   width: 200px;
+  $class-pre: col-;
+  @for $n from 1 through 24 {
+    &.#{$class-pre}#{$n} {
+      width: ($n/24) * 100%;
+    }
+  }
+  $class-pre: offset-;
+  @for $n from 1 through 24 {
+    &.#{$class-pre}#{$n} {
+      margin-left: $n/24 * 100%;
+    }
+  }
 }
 </style>

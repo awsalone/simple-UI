@@ -9,10 +9,10 @@
       <g-Button icon="last" type="primary"></g-Button>
       <g-Button icon="next" type="primary"></g-Button>
     </g-Button-group>
-    <g-row>
-      <g-col class="bg-purple-dark" :span="12" :offset="10" :gutter="10"></g-col>
-      <g-col class="bg-purple-dark"></g-col>
-      <g-col class="bg-purple-light"></g-col>
+    <g-row :gutter="10" class="gg">
+      <g-col class="bg-purple-dark" :span="6"></g-col>
+      <g-col class="bg-purple-dark" :span="8" :offset="2"></g-col>
+      <g-col class="bg-purple-light" :span="8"></g-col>
     </g-row>
   </div>
 </template>
@@ -53,5 +53,8 @@ export default {
   background: #e5e9f2;
   border-radius: 4px;
   min-height: 36px;
+}
+.gg {
+  background-color: black;
 }
 </style>
