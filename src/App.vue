@@ -20,6 +20,12 @@
         <div class="bg-purple-light"></div>
       </g-col>
     </g-row>
+    <g-swipe class="g-swipe">
+      <g-swipe-item class="g-swipe-item">1</g-swipe-item>
+      <g-swipe-item class="g-swipe-item">2</g-swipe-item>
+      <g-swipe-item class="g-swipe-item">3</g-swipe-item>
+      <g-swipe-item class="g-swipe-item">4</g-swipe-item>
+    </g-swipe>
   </div>
 </template>
 
@@ -59,5 +65,12 @@ export default {
   background: #e5e9f2;
   border-radius: 4px;
   min-height: 36px;
+}
+.g-swipe .g-swipe-item {
+  color: #fff;
+  font-size: 20px;
+  line-height: 150px;
+  text-align: center;
+  background-color: #39a9ed;
 }
 </style>
