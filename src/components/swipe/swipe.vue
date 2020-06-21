@@ -8,7 +8,7 @@
     <transition name="swipe">
       <div
         class="swipe-container"
-        :style="[{width:(width * swipeItems.length) +'px'},swipeStyle,{ transitionDuration: (this.state ? 0+'s': 1 + 's')}]"
+        :style="[{width:(width * swipeItems.length) +'px'},swipeStyle,{ transitionDuration: autoPlayDelay+'ms'}]"
       >
         <slot></slot>
       </div>
@@ -18,7 +18,13 @@
         <g-Icon icon="last" color="#fff"></g-Icon>
       </span>
       <div class="dotIndex">
-        <span class="dots" v-for="(item,index) in swipeItems" :key="index" @click="toggle(index)"></span>
+        <span
+          class="dots"
+          :class="{active:n===index}"
+          v-for="(item,n) in swipeItems"
+          :key="n"
+          @click="toggle(index)"
+        ></span>
       </div>
 
       <span class="next" @click="toggle(index+1)">
@@ -34,7 +40,9 @@ export default {
     return {
       swipeItem: [],
       index: 0,
-      state: false // 轮播图边界状态
+      state: false, // 轮播图边界状态
+      startP: '',
+      endP: ''
     }
   },
   methods: {
@@ -45,14 +53,19 @@ export default {
     toggle (n = this.index + 1) {
       let length = this.swipeItems.length - 1
       if (n < 0) {
+        // 0 -> 3
         this.state = true
         this.index = length
+
       } else if (n === length + 1) {
+        // 3 -> 0
         this.state = true
         this.index = 0
+
       } else {
         this.state = false
         this.index = n
+
       }
     },
     pause () {
@@ -62,6 +75,7 @@ export default {
     start () {
       this.timer = setInterval(this.toggle, this.autoPlayDelay)
     }
+
 
   },
   computed: {
@@ -88,7 +102,7 @@ export default {
       type: [Number, String]
     },
     autoPlayDelay: {
-      default: 3000,
+      default: 1000,
       type: [Number, String]
     }
   },
@@ -104,17 +118,15 @@ export default {
 </script>
 <style lang="scss" >
 .swipe {
-  width: 300px;
-  height: 150px;
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  .swipe-enter-active {
-    transition: all 0.3s ease;
-  }
-  .swipe-leave-active {
-    transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
-  }
+  // .swipe-enter-active {
+  //   transition: all 0.3s ease;
+  // }
+  // .swipe-leave-active {
+  //   transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+  // }
 
   .swipe-container {
     display: flex;
@@ -149,8 +161,11 @@ export default {
         width: 5px;
         height: 5px;
         border-radius: 50%;
-        background-color: #fff;
+        background-color: rgba(240, 240, 240, 0.5);
         margin: 3px;
+        &.active {
+          background-color: #fff;
+        }
       }
     }
   }

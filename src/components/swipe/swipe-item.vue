@@ -11,7 +11,7 @@ export default {
 </script>
 <style lang="scss" >
 .swipeItem {
-  width: 300px;
-  height: 150px;
+  width: 100%;
+  height: 100%;
 }
 </style>

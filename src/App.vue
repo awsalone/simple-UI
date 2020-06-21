@@ -34,7 +34,13 @@
 export default {
   name: 'App',
   components: {
+  },
+  data () {
+    return {
+      num: 300
+    }
   }
+
 }
 </script>
 
@@ -66,11 +72,19 @@ export default {
   border-radius: 4px;
   min-height: 36px;
 }
+.g-swipe {
+  margin: 10px auto;
+}
 .g-swipe .g-swipe-item {
   color: #fff;
   font-size: 20px;
   line-height: 150px;
   text-align: center;
   background-color: #39a9ed;
+}
+.test {
+  width: 100px;
+  height: 100px;
+  background: #000;
 }
 </style>
