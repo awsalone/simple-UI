@@ -8,8 +8,9 @@
     @blur="blurChange($event)"
     @mouseover="mOverChange($event)"
     @mouseout="mOutChange($event)"
-    :class="[{[`icon-${iconPosition}`]:true,},`icon-${borderShape}`,{borderExist:typeStyle.border}]"
+    :class="[{[`icon-${iconPosition}`]:true,},{circle: circle},{round:round},{borderExist:typeStyle.border}]"
     :style="[{color:typeStyle.color},{backgroundColor:typeStyle.bgc}]"
+    @click="handleClick"
   >
     <g-Icon icon="loading" class="loading icon" v-if="loading" style="fill:#fff"></g-Icon>
     <g-Icon v-if="icon && !loading" :icon="icon" class="icon" color="typeStyle.color"></g-Icon>
@@ -39,6 +40,14 @@ export default {
     loading: {
       type: Boolean,
       default: false
+    },
+    circle: {
+      type: Boolean,
+      default: false
+    },
+    round: {
+      type: Boolean,
+      default: false
     }
 
   },
@@ -48,8 +57,6 @@ export default {
     return {
       //foucus状态
       onfoucus: false,
-      // 边框形状
-      borderShape: '',
       // type
       typeStyle: {},
       typeList: [
@@ -95,7 +102,6 @@ export default {
         e.target.style.borderColor = this.typeStyle.hoverBorderColor
         e.target.style.color = this.typeStyle.hoverColor
       }
-
       e.target.style.backgroundColor = this.typeStyle.hoverbgc
     },
     // mousedown
@@ -140,17 +146,15 @@ export default {
       }
       e.target.style.backgroundColor = this.typeStyle.bgc
       this.onfoucus = false
+    },
+    handleClick: function (e) {
+      this.$emit('click', e)
     }
 
 
   },
   created () {
-    // border-radius
-    if (this.$attrs.circle !== undefined) {
-      this.borderShape = 'circle'
-    } else if (this.$attrs.round !== undefined) {
-      this.borderShape = 'round'
-    }
+
     // type
     if (this.type === 'primary') {
       this.typeStyle = this.typeList[1]
@@ -185,6 +189,10 @@ export default {
   align-items: center;
   margin: 5px;
   border: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
   .loading {
     animation: spin 1.3s linear infinite;
   }
@@ -203,11 +211,11 @@ export default {
       order: 2;
     }
   }
-  &.icon-circle {
+  &.circle {
     border-radius: 50%;
     padding: 0.5rem;
   }
-  &.icon-round {
+  &.round {
     border-radius: 300px;
   }
 }

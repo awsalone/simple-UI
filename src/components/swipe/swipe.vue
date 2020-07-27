@@ -26,7 +26,6 @@
           @click="toggle(index)"
         ></span>
       </div>
-
       <span class="next" @click="toggle(index+1)">
         <g-Icon icon="next" color="#fff"></g-Icon>
       </span>

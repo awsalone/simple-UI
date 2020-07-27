@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <g-Button>默认按钮</g-Button>
-    <g-Button type="primary">主要按钮</g-Button>
+    <g-Button @click="a">默认按钮</g-Button>
+    <g-Button type="primary" round>主要按钮</g-Button>
     <g-Button type="info">信息按钮</g-Button>
     <g-Button type="warning" icon="setting" :loading="true" iconPosition="right">警告按钮</g-Button>
     <g-Button circle type="primary" icon="setting"></g-Button>
@@ -38,6 +38,11 @@ export default {
   data () {
     return {
       num: 300
+    }
+  },
+  methods: {
+    a () {
+      console.log(111)
     }
   }
 
