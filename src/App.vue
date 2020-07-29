@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <g-Button @click="a">默认按钮</g-Button>
+    <g-Button @click="a" disabled>默认按钮</g-Button>
     <g-Button type="primary" round>主要按钮</g-Button>
-    <g-Button type="info">信息按钮</g-Button>
+    <g-Button type="info" disabled>信息按钮</g-Button>
     <g-Button type="warning" icon="setting" :loading="true" iconPosition="right">警告按钮</g-Button>
     <g-Button circle type="primary" icon="setting"></g-Button>
     <g-Button-group>
@@ -26,6 +26,14 @@
       <g-swipe-item class="g-swipe-item">3</g-swipe-item>
       <g-swipe-item class="g-swipe-item">4</g-swipe-item>
     </g-swipe>
+    <g-dialog :visible.sync="visible">
+      <template>内容</template>
+      <template v-slot:footer>
+        <g-Button>取消</g-Button>
+        <g-Button type="primary">确认</g-Button>
+      </template>
+    </g-dialog>
+    <g-Button @click="visible=true">dialog</g-Button>
   </div>
 </template>
 
@@ -37,7 +45,8 @@ export default {
   },
   data () {
     return {
-      num: 300
+      num: 300,
+      visible: false
     }
   },
   methods: {

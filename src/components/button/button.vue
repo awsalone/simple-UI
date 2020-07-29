@@ -8,9 +8,10 @@
     @blur="blurChange($event)"
     @mouseover="mOverChange($event)"
     @mouseout="mOutChange($event)"
-    :class="[{[`icon-${iconPosition}`]:true,},{circle: circle},{round:round},{borderExist:typeStyle.border}]"
+    :class="[{[`icon-${iconPosition}`]:true,},{circle},{round},{disabled},{borderExist:typeStyle.border}]"
     :style="[{color:typeStyle.color},{backgroundColor:typeStyle.bgc}]"
     @click="handleClick"
+    :disabled="disabled"
   >
     <g-Icon icon="loading" class="loading icon" v-if="loading" style="fill:#fff"></g-Icon>
     <g-Icon v-if="icon && !loading" :icon="icon" class="icon" color="typeStyle.color"></g-Icon>
@@ -20,6 +21,7 @@
 
 <script>
 export default {
+  name: 'g-button',
   props: {
     // 图标名称
     icon: {},
@@ -46,6 +48,10 @@ export default {
       default: false
     },
     round: {
+      type: Boolean,
+      default: false
+    },
+    disabled: {
       type: Boolean,
       default: false
     }
@@ -217,6 +223,9 @@ export default {
   }
   &.round {
     border-radius: 300px;
+  }
+  &.disabled {
+    cursor: no-drop;
   }
 }
 </style>
