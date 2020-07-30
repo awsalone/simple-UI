@@ -22,6 +22,7 @@
 
 <script>
 export default {
+  name: 'g-dialog',
   props: {
     title: {
       type: String,

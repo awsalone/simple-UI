@@ -34,7 +34,9 @@
 </template>
 
 <script>
+
 export default {
+  name: 'g-swipe',
   data () {
     return {
       swipeItem: [],
@@ -120,6 +122,7 @@ export default {
   position: relative;
   overflow: hidden;
   cursor: pointer;
+
   // .swipe-enter-active {
   //   transition: all 0.3s ease;
   // }

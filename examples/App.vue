@@ -20,12 +20,12 @@
         <div class="bg-purple-light"></div>
       </g-col>
     </g-row>
-    <g-swipe class="g-swipe">
+    <!-- <g-swipe class="g-swipe">
       <g-swipe-item class="g-swipe-item">1</g-swipe-item>
       <g-swipe-item class="g-swipe-item">2</g-swipe-item>
       <g-swipe-item class="g-swipe-item">3</g-swipe-item>
       <g-swipe-item class="g-swipe-item">4</g-swipe-item>
-    </g-swipe>
+    </g-swipe>-->
     <g-dialog :visible.sync="visible">
       <template>内容</template>
       <template v-slot:footer>

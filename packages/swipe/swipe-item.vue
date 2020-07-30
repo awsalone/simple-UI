@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'swipeItem'
+  name: 'g-swipe-item'
 }
 </script>
 <style lang="scss" >

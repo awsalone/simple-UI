@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-  name: 'icon',
+  name: 'g-Icon',
   props: ['icon', 'color']
 }
 </script>

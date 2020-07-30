@@ -5,6 +5,7 @@
 </template>
 <script>
 export default {
+  name: 'g-col',
   props: {
     // 占据列数
     span: {
