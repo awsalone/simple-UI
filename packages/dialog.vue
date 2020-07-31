@@ -5,8 +5,7 @@
         <div class="dialog_header">
           <span class="dialog_title">{{title}}</span>
           <button class="dialog_headerbtn" @click.self="handleClose">
-            111
-            <g-Icon icon="left"></g-Icon>
+            <g-Icon icon="setting"></g-Icon>
           </button>
         </div>
         <div class="dialog_body">
