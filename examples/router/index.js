@@ -1,14 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import routes from './route.js'
 
 Vue.use(VueRouter)
 
-const routers = [
-
-]
 
 const router = new VueRouter({
-  routers
+  routes
 })
 
 export default router

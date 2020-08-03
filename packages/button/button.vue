@@ -193,8 +193,8 @@ export default {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  margin: 5px;
   border: 0;
+  box-sizing: border-box;
   -webkit-user-select: none;
   -moz-user-select: none;
   -o-user-select: none;

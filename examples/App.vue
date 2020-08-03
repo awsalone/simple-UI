@@ -11,16 +11,15 @@
       <div class="content">
         <div class="sliderbar">
           <ul>
-            <li class="menuItem">Button 按钮</li>
-            <li class="menuItem">Button 按钮</li>
-            <li class="menuItem">Button 按钮</li>
-            <li class="menuItem">Button 按钮</li>
-            <li class="menuItem">Button 按钮</li>
+            <router-link :to="item.path" v-for="(item,index) in navs" :key="index">
+              <li class="menuItem">{{item.name}}</li>
+            </router-link>
           </ul>
         </div>
-        <router-view></router-view>
+
         <div class="right">
-          <g-Button @click="a" disabled>默认按钮</g-Button>
+          <router-view></router-view>
+          <!-- <g-Button @click="a" disabled>默认按钮</g-Button>
           <g-Button type="primary" round>主要按钮</g-Button>
           <g-Button type="info" disabled>信息按钮</g-Button>
           <g-Button type="warning" icon="setting" :loading="true" iconPosition="right">警告按钮</g-Button>
@@ -47,7 +46,7 @@
               <g-Button type="primary">确认</g-Button>
             </template>
           </g-dialog>
-          <g-Button @click="visible=true">dialog</g-Button>
+          <g-Button @click="visible=true">dialog</g-Button>-->
         </div>
       </div>
     </div>
@@ -55,7 +54,8 @@
 </template>
 
 <script>
-
+// eslint-disable-next-line no-unused-vars
+import routes from './router/nav.json'
 export default {
   name: 'App',
   components: {
@@ -70,6 +70,14 @@ export default {
     a () {
       console.log(111)
     }
+  },
+  computed: {
+    navs () {
+      return routes.list
+    }
+  },
+  created () {
+    console.log(routes)
   }
 
 }
@@ -79,6 +87,13 @@ export default {
 * {
   margin: 0;
   padding: 0;
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  div {
+    box-sizing: border-box;
+  }
 }
 :root {
   --button-bg: #fff;
@@ -115,6 +130,7 @@ export default {
     .nav {
       display: flex;
       height: 100%;
+
       .navitem {
         font-size: 0.9rem;
         line-height: 4rem;
@@ -139,7 +155,6 @@ export default {
       .sliderbar {
         width: 15rem;
         height: 100%;
-        background-color: #ccc;
         ul {
           list-style: none;
           li {
@@ -149,10 +164,15 @@ export default {
               font-size: 0.8rem;
               cursor: pointer;
             }
+            &.menuItem:hover {
+              background-color: rgb(234, 248, 254);
+            }
           }
         }
       }
       .right {
+        width: 100%;
+        border-left: 1px solid #ccc;
         .g-swipe {
           margin: 10px auto;
         }

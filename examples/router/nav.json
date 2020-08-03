@@ -1,0 +1,19 @@
+{
+  "list": [{
+      "path": "/button",
+      "name": "button"
+    },
+    {
+      "path": "/dialog",
+      "name": "dialog"
+    },
+    {
+      "path": "/layout",
+      "name": "layout"
+    },
+    {
+      "path": "/swipe",
+      "name": "swipe"
+    }
+  ]
+}
