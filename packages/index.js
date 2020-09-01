@@ -7,6 +7,7 @@ import Col from './grid/col'
 import Swipe from './swipe/swipe'
 import SwipeItem from './swipe/swipe-item'
 import Dialog from './dialog.vue'
+import ToolTips from './tooltips.vue'
 
 const components = [
   Button,
@@ -16,7 +17,8 @@ const components = [
   Col,
   Swipe,
   SwipeItem,
-  Dialog
+  Dialog,
+  ToolTips
 ]
 const install = function (Vue) {
   components.forEach(item => {

@@ -19,15 +19,7 @@
 
         <div class="right">
           <router-view></router-view>
-          <!-- <g-Button @click="a" disabled>默认按钮</g-Button>
-          <g-Button type="primary" round>主要按钮</g-Button>
-          <g-Button type="info" disabled>信息按钮</g-Button>
-          <g-Button type="warning" icon="setting" :loading="true" iconPosition="right">警告按钮</g-Button>
-          <g-Button circle type="primary" icon="setting"></g-Button>
-          <g-Button-group>
-            <g-Button icon="last" type="primary"></g-Button>
-            <g-Button icon="next" type="primary"></g-Button>
-          </g-Button-group>
+          <!-- 
           <g-row :gutter="10">
             <g-col :span="6">
               <div class="bg-purple-dark"></div>
@@ -39,13 +31,6 @@
               <div class="bg-purple-light"></div>
             </g-col>
           </g-row>
-          <g-dialog :visible.sync="visible">
-            <template>内容</template>
-            <template v-slot:footer>
-              <g-Button>取消</g-Button>
-              <g-Button type="primary">确认</g-Button>
-            </template>
-          </g-dialog>
           <g-Button @click="visible=true">dialog</g-Button>-->
         </div>
       </div>
@@ -62,7 +47,6 @@ export default {
   },
   data () {
     return {
-      num: 300,
       visible: false
     }
   },
@@ -77,7 +61,7 @@ export default {
     }
   },
   created () {
-    console.log(routes)
+
   }
 
 }
