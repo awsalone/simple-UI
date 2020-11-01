@@ -4,9 +4,17 @@
   </svg>
 </template>
 <script>
+import('./assets/iconfont')
 export default {
   name: 'g-Icon',
-  props: ['icon', 'color']
+  props: {
+    icon: {
+
+    },
+    color: {
+      default: '#fff'
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>

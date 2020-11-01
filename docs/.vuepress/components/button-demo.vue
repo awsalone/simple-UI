@@ -10,11 +10,13 @@
             <g-Button class="btnsty" type="info">info 按钮</g-Button>
             <g-Button class="btnsty" type="warning">warning 按钮</g-Button>
           </g-row>
-          <pre class="codeItem">
-    &lt;<span class="btnName">g-Button</span> &gt;默认按钮&lt;/<span class="btnName">g-Button</span> &gt;
-    &lt;<span class="btnName">g-Button</span>  type="primary"&gt;primary 按钮&lt;/<span class="btnName">g-Button</span> &gt;
-    &lt;<span class="btnName">g-Button</span>  type="info" &gt;info 按钮&lt;/<span class="btnName">g-Button</span> &gt;
-    &lt;<span class="btnName">g-Button</span>  type="warning" &gt;warning 按钮&lt;/<span class="btnName">g-Button</span> &gt;</pre>
+          <pre>
+      <code>       
+    &lt;g-Button &gt;默认按钮&lt;/g-Button &gt;
+    &lt;g-Button  type="primary"&gt;primary 按钮&lt;/g-Button &gt;
+    &lt;g-Button  type="info" &gt;info 按钮&lt;/g-Button &gt;
+    &lt;g-Button  type="warning" &gt;warning 按钮&lt;/g-Button &gt;
+            </code></pre>
         </div>
         <div class="codeSection">
           <g-row>
@@ -23,25 +25,31 @@
             <g-Button class="btnsty" round type="info">info 按钮</g-Button>
             <g-Button class="btnsty" round type="warning">warning 按钮</g-Button>
           </g-row>
-          <pre class="codeItem">
-    &lt;<span class="btnName">g-Button</span> round &gt;默认按钮&lt;/<span class="btnName">g-Button</span> &gt;
-    &lt;<span class="btnName">g-Button</span> round  type="primary"&gt;primary 按钮&lt;/<span class="btnName">g-Button</span> &gt;
-    &lt;<span class="btnName">g-Button</span> round  type="info" &gt;info 按钮&lt;/<span class="btnName">g-Button</span> &gt;
-    &lt;<span class="btnName">g-Button</span> round  type="warning" &gt;warning 按钮&lt;/<span class="btnName">g-Button</span> &gt;</pre>
+          <pre>
+            
+    <code>&lt;g-Button round &gt;默认按钮&lt;/g-Button &gt;
+    &lt;g-Button round  type="primary"&gt;primary 按钮&lt;/g-Button &gt;
+    &lt;g-Button round  type="info" &gt;info 按钮&lt;/g-Button &gt;
+    &lt;g-Button round  type="warning" &gt;warning 按钮&lt;/g-Button &gt;
+    </code>
+    </pre>
         </div>
         <div class="codeSection">
           <g-row>
             <g-Button class="btnsty" icon="setting" circle></g-Button>
           </g-row>
-          <pre class="codeItem">
-    &lt;<span class="btnName">g-Button</span> icon="setting" circle  type="warning" &gt;warning 按钮&lt;/<span class="btnName">g-Button</span> &gt;</pre>
+          <pre>
+            
+    <code>&lt;g-Button icon="setting" circle  type="warning" &gt;warning 按钮&lt;/g-Button &gt;
+    </code></pre>
         </div>
         <div class="codeSection">
           <g-row>
             <g-Button disabled class="btnsty">禁用状态</g-Button>
           </g-row>
-          <pre class="codeItem">
-    &lt;<span class="btnName">g-Button</span> disabled  type="warning" &gt;禁用状态&lt;/<span class="btnName">g-Button</span> &gt;</pre>
+          <pre>
+            <code>
+    &lt;g-Button disabled  type="warning" &gt;禁用状态&lt;/g-Button &gt;</code></pre>
         </div>
         <div class="codeSection">
           <g-row>
@@ -50,11 +58,12 @@
             <g-Button class="btnsty" type="primary" icon="setting" iconPosition="right">右图标</g-Button>
             <g-Button class="btnsty" type="primary" icon="setting"></g-Button>
           </g-row>
-          <pre class="codeItem">
-    &lt;<span class="btnName">g-Button</span> loading &gt;加载&lt;/<span class="btnName">g-Button</span> &gt;
-    &lt;<span class="btnName">g-Button</span> icon="setting"  type="primary"&gt;左图标&lt;/<span class="btnName">g-Button</span> &gt;
-    &lt;<span class="btnName">g-Button</span> icon="setting"  type="primary" iconPosition="right" &gt;右图标&lt;/<span class="btnName">g-Button</span> &gt;
-    &lt;<span class="btnName">g-Button</span> icon="setting"  type="primary" &gt;&lt;/<span class="btnName">g-Button</span> &gt;</pre>
+          <pre>
+            <code>
+    &lt;g-Button loading &gt;加载&lt;/g-Button &gt;
+    &lt;g-Button icon="setting"  type="primary"&gt;左图标&lt;/g-Button &gt;
+    &lt;g-Button icon="setting"  type="primary" iconPosition="right" &gt;右图标&lt;/g-Button &gt;
+    &lt;g-Button icon="setting"  type="primary" &gt;&lt;/g-Button &gt;</code></pre>
         </div>
         <div class="codeSection">
           <g-row>
@@ -64,14 +73,15 @@
               <g-Button type="primary" icon="next" iconPosition="right">下一页</g-Button>
             </g-Button-group>
           </g-row>
-          <pre class="codeItem">
-    &lt;<span class="btnName">g-Button</span> icon="last"  type="primary"&gt;上一页&lt;/<span class="btnName">g-Button</span> &gt;
-    &lt;<span class="btnName">g-Button</span> type="primary" &gt;右图标&lt;按钮组/<span class="btnName">g-Button</span> &gt;
-    &lt;<span class="btnName">g-Button</span> icon="next" iconPosition="right" type="primary" &gt;下一页&lt;/<span class="btnName">g-Button</span> &gt;</pre>
+          <pre>
+            <code>
+    &lt;g-Button icon="last"  type="primary"&gt;上一页&lt;/g-Button &gt;
+    &lt;g-Button type="primary" &gt;右图标&lt;按钮组/g-Button &gt;
+    &lt;g-Button icon="next" iconPosition="right" type="primary" &gt;下一页&lt;/g-Button &gt;</code></pre>
         </div>
       </div>
     </div>
-    <table>
+    <table style="padding-left:16px">
       <thead>
         <tr>
           <th>参数</th>
@@ -143,20 +153,6 @@ export default {
 }
 .codeSection {
   padding: 1rem;
-
-  .codeItem {
-    margin-top: 5px;
-    display: block;
-    padding: 1rem;
-    overflow-x: auto;
-    background: #f7f7f7;
-    font-size: 1.1rem;
-    line-height: 2;
-    color: #999999;
-    .btnName {
-      color: #e45649;
-    }
-  }
 }
 table {
   width: 100%;

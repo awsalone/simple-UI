@@ -49,7 +49,6 @@ export default {
   methods: {
     init () {
       this.swipeItem = this.$children
-
     },
     toggle (n = this.index + 1) {
       let length = this.swipeItems.length - 1
@@ -74,6 +73,7 @@ export default {
       this.timer = undefined
     },
     start () {
+      if (!this.auto) return
       this.timer = setInterval(this.toggle, this.autoPlayDelay)
     }
 
@@ -83,7 +83,7 @@ export default {
     // 组件名为swipeItem的子组件
     swipeItems () {
       return this.swipeItem.filter(vm => {
-        return vm.$options.name == 'swipeItem'
+        return vm.$options._componentTag == 'g-swipe-item'
       })
     },
     swipeStyle () {
@@ -105,16 +105,20 @@ export default {
     autoPlayDelay: {
       default: 1000,
       type: [Number, String]
+    },
+    auto: {
+      default: true,
+      type: Boolean
     }
   },
   mounted () {
     this.$nextTick(() => {
       this.init()
-      this.timer = setInterval(this.toggle, this.autoPlayDelay)
+      if (this.auto) {
+        this.timer = setInterval(this.toggle, this.autoPlayDelay)
+      }
     })
-
   }
-
 }
 </script>
 <style lang="scss" >
@@ -131,8 +135,9 @@ export default {
   // }
 
   .swipe-container {
+    width: 100%;
+    height: 100%;
     display: flex;
-    height: 150px;
   }
   .g-dots {
     > span {

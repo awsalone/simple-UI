@@ -15,15 +15,15 @@
               </template>
             </g-dialog>
           </g-row>
-          <pre class="codeItem">
-      &lt;<span class="btnName">g-dialog</span> :visible.sync="visible"&gt;
-        &lt;<span class="btnName">template</span>&gt;内容&lt;/<span class="btnName">template</span>&gt;
-        &lt;<span class="btnName">template</span> v-slot:footer&gt;
-          &lt;<span class="btnName">g-Button</span> @click="visible = false"&gt;取消&lt;/<span class="btnName">g-Button</span>&gt;
-           &lt;<span class="btnName">g-Button</span> type="primary" @click="visible = false"&gt;确认&lt;/<span class="btnName">g-Button</span>&gt;
-         &lt;/<span class="btnName">template</span>&gt;
-       &lt;/<span class="btnName">g-dialog</span>&gt;
-       &lt;<span class="btnName">script</span>&gt;
+          <pre><code>
+      &lt;g-dialog :visible.sync="visible"&gt;
+        &lt;template&gt;内容&lt;/template&gt;
+        &lt;template v-slot:footer&gt;
+          &lt;g-Button @click="visible = false"&gt;取消&lt;/g-Button&gt;
+           &lt;g-Button type="primary" @click="visible = false"&gt;确认&lt;/g-Button&gt;
+         &lt;/template&gt;
+       &lt;/g-dialog&gt;
+       &lt;script&gt;
          export default {
             data () {
               return {
@@ -31,14 +31,13 @@
              }
             }
           }
-       &lt;/<span
-  class="btnName"
->script</span>&gt;
+       &lt;/script&gt;
+</code>
        </pre>
         </div>
       </div>
     </div>
-    <table>
+    <table style="padding-left:16px">
       <thead>
         <tr>
           <th>参数</th>

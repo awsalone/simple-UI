@@ -14,7 +14,7 @@
     :disabled="disabled"
   >
     <g-Icon icon="loading" class="loading icon" v-if="loading" style="fill:#fff"></g-Icon>
-    <g-Icon v-if="icon && !loading" :icon="icon" class="icon" color="typeStyle.color"></g-Icon>
+    <g-Icon v-if="icon && !loading" :icon="icon" class="icon" :color="typeStyle.color"></g-Icon>
     <slot class="content"></slot>
   </button>
 </template>

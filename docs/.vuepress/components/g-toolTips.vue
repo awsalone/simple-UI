@@ -58,7 +58,7 @@ export default {
   },
   watch: {
     show: function () {
-      let trigger = this.$refs.trigger.children[0]
+      let trigger = this.$refs.trigger.children[0] ? this.$refs.trigger.children[0] : this.$refs.trigger
       let popover = this.$refs.popover
       let arrow = this.$refs.arrow
       switch (this.placement) {
@@ -81,7 +81,6 @@ export default {
       }
       popover.style.left = this.position.left + 'px'
       popover.style.top = this.position.top + 'px'
-      console.log(arrow)
     }
   },
   mounted () {
