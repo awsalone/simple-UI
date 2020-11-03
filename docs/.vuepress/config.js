@@ -5,7 +5,6 @@ module.exports = {
   // repo: 'https://github.com/txs1992/mt-blog', // 添加 github 链接
   themeConfig: {
     sidebar: [
-
       {
         title: '组件',
         path: '/vue/',
